@@ -92,5 +92,5 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script src="../js/comum.js" charset="ISO-8859-1"></script>
-<script src="../js/cadastro_usuario.js" charset="ISO-8859-1"></script>
+<script src="../js/voto.js" charset="ISO-8859-1"></script>
 </html>
