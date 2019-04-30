@@ -32,28 +32,43 @@
 </head>
 <body>
 	<center>
-		<input type="number" disabled id="numero_candidato"
+		<div id="candidato"></div>
+	</center>
+	<center>
+		<input type="text" disabled id="numero_candidato"
 			name="numero_candidato" style="width: 300px; height: 40px;">
 		<br>
-		<button type="button" class="btn btn-primary voto">1</button>
-		<button type="button" class="btn btn-primary voto">2</button>
-		<button type="button" class="btn btn-primary voto">3</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('1')">1</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('2')">2</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('3')">3</button>
 		<br>
-		<button type="button" class="btn btn-primary voto">4</button>
-		<button type="button" class="btn btn-primary voto">5</button>
-		<button type="button" class="btn btn-primary voto">6</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('4')">4</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('5')">5</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('6')">6</button>
 		<br>
-		<button type="button" class="btn btn-primary voto">7</button>
-		<button type="button" class="btn btn-primary voto">8</button>
-		<button type="button" class="btn btn-primary voto">9</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('7')">7</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('8')">8</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('9')">9</button>
 		<br>
-		<button type="button" class="btn btn-primary voto">Limpar</button>
-		<button type="button" class="btn btn-primary voto">0</button>
-		<a href="./secao.jsp" >
-			<button type="button" onclick="Seu Voto Está Seguro" class="btn btn-primary voto">Votar</button>
-		</a>
+		<button type="button" class="btn btn-primary voto" onclick="limpar()">Limpar</button>
+		<button type="button" class="btn btn-primary voto"
+			onclick="digitar('0')">0</button>
+		<button type="button" onclick="Seu Voto Está Seguro"
+			class="btn btn-primary voto" onclick="confirmarVoto();">Votar</button>
 		<br>
 
 	</center>
 </body>
+
+<script src="../js/comum.js" charset="ISO-8859-1"></script>
+<script src="../js/voto.js" charset="ISO-8859-1"></script>
 </html>

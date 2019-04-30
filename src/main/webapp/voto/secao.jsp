@@ -54,7 +54,8 @@
 				<h3>Seções Atuais</h3>
 				<div id="botoes_lista"
 					style="width: 100%; text-align: right; padding-bottom: 50px;">
-					<button type="button" class="btn btn-primary" onclick="abrirSecao();">Abrir Seção</button>
+					<button type="button" class="btn btn-primary"
+						onclick="abrirSecao();">Abrir Seção</button>
 				</div>
 				<div id="lista">
 					<table>
@@ -69,7 +70,15 @@
 						<tr onclick="onRowSelect(<%=secaoVoto.getIdSecaoVoto()%>);">
 							<td><%=secaoVoto.getIdSecaoVoto()%></td>
 							<td><%=secaoVoto.getSecao().getNome()%></td>
-							<td><%if(secaoVoto.getStatus()){%>Aberta<%}else{%>Fechada<%}%></td>
+							<td>
+								<%
+									if (secaoVoto.getStatus()) {
+								%>Aberta<%
+									} else {
+								%>Fechada<%
+									}
+								%>
+							</td>
 						</tr>
 						<%
 							}
@@ -81,10 +90,38 @@
 
 	</div>
 
+
 	<%
 		}
 	%>
+	<!-- The Modal -->
+	<div class="modal" id="modal_verificacal" role="dialog"
+		style="min-width: 1024px !important;">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Verificação de Título</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label for="titulo_eleitor">Título do Eleitor</label> <input type="text"
+							class="form-control" id="titulo_eleitor" placeholder="Nome">
+					</div>
+					<div class="form-group">
+						<label for="secao_eleitor">Seção</label> <input type="text"
+							class="form-control" id="secao_eleitor" placeholder="Nome">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success" onclick="verificar();">Verificar</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+				</div>
+			</div>
+			<input type="hidden" id="secao_selecionada" name="secao_selecionada">
 
+		</div>
+	</div>
 </body>
 
 <!-- Bootstrap core JavaScript -->

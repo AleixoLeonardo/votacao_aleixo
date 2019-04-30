@@ -50,6 +50,32 @@ public class UsuarioDAO {
 		return results;
 	}
 
+	public Usuario buscarCandidatao(String numeroCandidato) {
+		session = HibernateUtil.getSessionFactory().openSession();
+		String hql = "SELECT u FROM Usuario u WHERE u.idUsuario = " + numeroCandidato;
+		Query query = session.createQuery(hql);
+		List result = query.list();
+		Usuario results = null;
+		if (result != null && result.size() > 0) {
+			results = (Usuario) result.get(0);
+		}
+		session.close();
+		return results;
+	}
+
+	public Usuario verificaTituloSecao(String titulo, String secao) {
+		session = HibernateUtil.getSessionFactory().openSession();
+		String hql = "SELECT u FROM Usuario u WHERE u.numeroTitulo = " + titulo + " AND u.zona.secao.nome = " + secao;
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		Usuario retorno = null;
+		if (results != null && results.size() > 0) {
+			retorno = (Usuario) results.get(0);
+		}
+		session.close();
+		return retorno;
+	}
+
 	public Usuario verificaUsuario(String numeroTitulo, String senha) {
 		session = HibernateUtil.getSessionFactory().openSession();
 		String hql = "SELECT u FROM Usuario u WHERE u.numeroTitulo = " + numeroTitulo + " AND u.senha = " + senha;
