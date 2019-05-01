@@ -59,11 +59,12 @@
 		<button type="button" class="btn btn-primary voto"
 			onclick="digitar('9')">9</button>
 		<br>
-		<button type="button" class="btn btn-primary voto" onclick="limpar()">Limpar</button>
+		<button type="button" class="btn  voto" onclick="limpar()"
+		style="background-color: #ffa84b">Limpar</button>
 		<button type="button" class="btn btn-primary voto"
 			onclick="digitar('0')">0</button>
 		<button type="button" onclick="Seu Voto Está Seguro"
-			class="btn btn-primary voto" onclick="confirmarVoto();">Votar</button>
+			class="btn btn-success voto" onclick="confirmarVoto();">Votar</button>
 		<br>
 
 	</center>

@@ -1,6 +1,8 @@
 function onRowSelect(id){
 	$("#modal_verificacal").modal('show');
-	$("#secao_selecionada").val(id);
+	$("#secao_selecionada").val(id.split("|")[0]);
+	$("#secao_eleitor").val(id.split("|")[1]);
+	$("#secao_eleitor").prop("disabled", true);
 }
 
 function verificar(){
@@ -19,6 +21,11 @@ function sucessoVerificar(data){
 		irParaVotacao(mensagem.id);
 	}
 
+}
+
+function limpar(){
+	$("#numero_candidato").val(""); 
+	$("#candidato").html("")
 }
 function irParaVotacao(idUsuario){
 	document.location.href = "./voto.jsp?secao=" +$("#secao_selecionada").val() + "&idUsuario=" + idUsuario ;

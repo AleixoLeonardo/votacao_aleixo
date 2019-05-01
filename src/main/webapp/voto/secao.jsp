@@ -67,7 +67,7 @@
 						<%
 							for (SecaoVoto secaoVoto : listaSecaoVoto) {
 						%>
-						<tr onclick="onRowSelect(<%=secaoVoto.getIdSecaoVoto()%>);">
+						<tr onclick="onRowSelect('<%=secaoVoto.getIdSecaoVoto() + "|" + secaoVoto.getSecao().getNome()%>');">
 							<td><%=secaoVoto.getIdSecaoVoto()%></td>
 							<td><%=secaoVoto.getSecao().getNome()%></td>
 							<td>

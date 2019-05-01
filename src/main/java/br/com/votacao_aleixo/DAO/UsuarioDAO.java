@@ -52,7 +52,8 @@ public class UsuarioDAO {
 
 	public Usuario buscarCandidatao(String numeroCandidato) {
 		session = HibernateUtil.getSessionFactory().openSession();
-		String hql = "SELECT u FROM Usuario u WHERE u.idUsuario = " + numeroCandidato;
+		String hql = "SELECT u FROM Usuario u WHERE u.idUsuario = " + numeroCandidato
+				+ " AND u.tipoUsuario.idTipoUsuario = 5";
 		Query query = session.createQuery(hql);
 		List result = query.list();
 		Usuario results = null;
