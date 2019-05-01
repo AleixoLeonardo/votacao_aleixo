@@ -17,6 +17,8 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
+<script
+	src="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/alertify.min.js"></script>
 
 <link href="../css/style.css" rel="stylesheet" type="text/css">
 <link href="../css/voto/voto.css" rel="stylesheet" type="text/css">
@@ -25,6 +27,34 @@
 
 <!-- Bootstrap core CSS -->
 <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.min.css" />
+
+<!-- 
+    RTL version
+-->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/alertify.rtl.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/default.rtl.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/semantic.rtl.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/alertifyjs@1.11.2/build/css/themes/bootstrap.rtl.min.css" />
 
 <!-- Custom styles for this template -->
 <link href="../css/simple-sidebar.css" rel="stylesheet">
@@ -63,9 +93,13 @@
 		style="background-color: #ffa84b">Limpar</button>
 		<button type="button" class="btn btn-primary voto"
 			onclick="digitar('0')">0</button>
-		<button type="button" onclick="Seu Voto Está Seguro"
-			class="btn btn-success voto" onclick="confirmarVoto();">Votar</button>
+			
+			
+		<button type="button" id="votar" disabled class="btn btn-success voto"
+		 onclick="votar();">Confirma</button>
 		<br>
+<input type="hidden" id="secao" name="secao" value="<%=request.getParameter("secao")%>">
+<input type="hidden" id="eleitor" name="eleitor" value="<%=request.getParameter("idUsuario")%>">
 
 	</center>
 </body>

@@ -31,11 +31,6 @@
 					<a href="./voto/secao.jsp" class="list-group-item list-group-item-action bg-light">Seção</a>
 <%
 				}
-				if (acessoBO.verificarAcessoPagina(idUsuario, "5")) {
-%>
-					<a href="#" class="list-group-item list-group-item-action bg-light">Votação</a>
-<%
-				}
 	}
 %>
 	</div>

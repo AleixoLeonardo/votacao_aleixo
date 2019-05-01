@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aluno
+ * @author Leonardo
  */
 @Entity
 @Table(name = "usuario")
@@ -63,6 +63,12 @@ public class Usuario implements Serializable {
     private String senha;
     @Column(name = "url_foto")
     private String urlFoto;
+    @OneToMany(mappedBy = "usuarioSecao")
+    private List<Voto> votoList;
+    @OneToMany(mappedBy = "usuarioCandidato")
+    private List<Voto> votoList1;
+    @OneToMany(mappedBy = "usuarioEleitor")
+    private List<Voto> votoList2;
     @OneToMany(mappedBy = "usuarioAlteracao")
     private List<LogAlteracao> logAlteracaoList;
     @JoinColumn(name = "municipio", referencedColumnName = "id_municipio")
@@ -74,6 +80,8 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "zona", referencedColumnName = "id_zona")
     @ManyToOne
     private Zona zona;
+    @OneToMany(mappedBy = "usuarioAbertura")
+    private List<SecaoVoto> secaoVotoList;
 
     public Usuario() {
     }
@@ -139,6 +147,33 @@ public class Usuario implements Serializable {
     }
 
     @XmlTransient
+    public List<Voto> getVotoList() {
+        return votoList;
+    }
+
+    public void setVotoList(List<Voto> votoList) {
+        this.votoList = votoList;
+    }
+
+    @XmlTransient
+    public List<Voto> getVotoList1() {
+        return votoList1;
+    }
+
+    public void setVotoList1(List<Voto> votoList1) {
+        this.votoList1 = votoList1;
+    }
+
+    @XmlTransient
+    public List<Voto> getVotoList2() {
+        return votoList2;
+    }
+
+    public void setVotoList2(List<Voto> votoList2) {
+        this.votoList2 = votoList2;
+    }
+
+    @XmlTransient
     public List<LogAlteracao> getLogAlteracaoList() {
         return logAlteracaoList;
     }
@@ -169,6 +204,15 @@ public class Usuario implements Serializable {
 
     public void setZona(Zona zona) {
         this.zona = zona;
+    }
+
+    @XmlTransient
+    public List<SecaoVoto> getSecaoVotoList() {
+        return secaoVotoList;
+    }
+
+    public void setSecaoVotoList(List<SecaoVoto> secaoVotoList) {
+        this.secaoVotoList = secaoVotoList;
     }
 
     @Override

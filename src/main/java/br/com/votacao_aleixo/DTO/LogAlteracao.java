@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aluno
+ * @author Leonardo
  */
 @Entity
 @Table(name = "log_alteracao")

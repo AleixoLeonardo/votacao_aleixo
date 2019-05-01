@@ -6,6 +6,7 @@
 package br.com.votacao_aleixo.DTO;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Aluno
+ * @author Leonardo
  */
 @Entity
 @Table(name = "secao_voto")
@@ -40,9 +43,14 @@ public class SecaoVoto implements Serializable {
     private Integer idSecaoVoto;
     @Column(name = "status")
     private Boolean status;
+    @OneToMany(mappedBy = "secaoVoto")
+    private List<Voto> votoList;
     @JoinColumn(name = "secao", referencedColumnName = "id_secao")
     @ManyToOne
     private Secao secao;
+    @JoinColumn(name = "usuario_abertura", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario usuarioAbertura;
 
     public SecaoVoto() {
     }
@@ -67,12 +75,29 @@ public class SecaoVoto implements Serializable {
         this.status = status;
     }
 
+    @XmlTransient
+    public List<Voto> getVotoList() {
+        return votoList;
+    }
+
+    public void setVotoList(List<Voto> votoList) {
+        this.votoList = votoList;
+    }
+
     public Secao getSecao() {
         return secao;
     }
 
     public void setSecao(Secao secao) {
         this.secao = secao;
+    }
+
+    public Usuario getUsuarioAbertura() {
+        return usuarioAbertura;
+    }
+
+    public void setUsuarioAbertura(Usuario usuarioAbertura) {
+        this.usuarioAbertura = usuarioAbertura;
     }
 
     @Override

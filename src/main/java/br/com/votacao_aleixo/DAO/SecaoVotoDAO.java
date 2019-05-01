@@ -40,4 +40,20 @@ public class SecaoVotoDAO {
 		session.close();
 		return results;
 	}
+	
+	public SecaoVoto pegarSecaoAberta(Integer idSecao, Integer idUsuario) {
+		session = HibernateUtil.getSessionFactory().openSession();
+		String hql = "SELECT s FROM SecaoVoto s WHERE s.secao.idSecao = " + idSecao
+				+ " AND s.status is TRUE AND (SELECT COUNT(v.idVoto) FROM Voto v "
+				+ " WHERE v.secaoVoto.secao.idSecao = "+idSecao+" "
+						+ " AND v.usuarioEleitor.idUsuario = "+idUsuario+") = 0";
+		Query query = session.createQuery(hql);
+		List results = query.list();
+		SecaoVoto result = null;
+		if(results != null && results.size() > 0 ){
+			result = (SecaoVoto) results.get(0);
+		}
+		session.close();
+		return result;
+	}
 }

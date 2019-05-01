@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Aluno
+ * @author Leonardo
  */
 @Entity
 @Table(name = "voto")
@@ -30,9 +32,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Voto.findAll", query = "SELECT v FROM Voto v")
     , @NamedQuery(name = "Voto.findByIdVoto", query = "SELECT v FROM Voto v WHERE v.idVoto = :idVoto")
-    , @NamedQuery(name = "Voto.findByUsuarioEleitor", query = "SELECT v FROM Voto v WHERE v.usuarioEleitor = :usuarioEleitor")
-    , @NamedQuery(name = "Voto.findByUsuarioCandidato", query = "SELECT v FROM Voto v WHERE v.usuarioCandidato = :usuarioCandidato")
-    , @NamedQuery(name = "Voto.findByUsuarioSecao", query = "SELECT v FROM Voto v WHERE v.usuarioSecao = :usuarioSecao")
     , @NamedQuery(name = "Voto.findByData", query = "SELECT v FROM Voto v WHERE v.data = :data")})
 public class Voto implements Serializable {
 
@@ -42,15 +41,21 @@ public class Voto implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_voto")
     private Integer idVoto;
-    @Column(name = "usuario_eleitor")
-    private Integer usuarioEleitor;
-    @Column(name = "usuario_candidato")
-    private Integer usuarioCandidato;
-    @Column(name = "usuario_secao")
-    private Integer usuarioSecao;
     @Column(name = "data")
     @Temporal(TemporalType.TIMESTAMP)
     private Date data;
+    @JoinColumn(name = "secao_voto", referencedColumnName = "id_secao_voto")
+    @ManyToOne
+    private SecaoVoto secaoVoto;
+    @JoinColumn(name = "usuario_secao", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario usuarioSecao;
+    @JoinColumn(name = "usuario_candidato", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario usuarioCandidato;
+    @JoinColumn(name = "usuario_eleitor", referencedColumnName = "id_usuario")
+    @ManyToOne
+    private Usuario usuarioEleitor;
 
     public Voto() {
     }
@@ -67,36 +72,44 @@ public class Voto implements Serializable {
         this.idVoto = idVoto;
     }
 
-    public Integer getUsuarioEleitor() {
-        return usuarioEleitor;
-    }
-
-    public void setUsuarioEleitor(Integer usuarioEleitor) {
-        this.usuarioEleitor = usuarioEleitor;
-    }
-
-    public Integer getUsuarioCandidato() {
-        return usuarioCandidato;
-    }
-
-    public void setUsuarioCandidato(Integer usuarioCandidato) {
-        this.usuarioCandidato = usuarioCandidato;
-    }
-
-    public Integer getUsuarioSecao() {
-        return usuarioSecao;
-    }
-
-    public void setUsuarioSecao(Integer usuarioSecao) {
-        this.usuarioSecao = usuarioSecao;
-    }
-
     public Date getData() {
         return data;
     }
 
     public void setData(Date data) {
         this.data = data;
+    }
+
+    public SecaoVoto getSecaoVoto() {
+        return secaoVoto;
+    }
+
+    public void setSecaoVoto(SecaoVoto secaoVoto) {
+        this.secaoVoto = secaoVoto;
+    }
+
+    public Usuario getUsuarioSecao() {
+        return usuarioSecao;
+    }
+
+    public void setUsuarioSecao(Usuario usuarioSecao) {
+        this.usuarioSecao = usuarioSecao;
+    }
+
+    public Usuario getUsuarioCandidato() {
+        return usuarioCandidato;
+    }
+
+    public void setUsuarioCandidato(Usuario usuarioCandidato) {
+        this.usuarioCandidato = usuarioCandidato;
+    }
+
+    public Usuario getUsuarioEleitor() {
+        return usuarioEleitor;
+    }
+
+    public void setUsuarioEleitor(Usuario usuarioEleitor) {
+        this.usuarioEleitor = usuarioEleitor;
     }
 
     @Override

@@ -47,11 +47,32 @@ function buscarCandidato(numeroCandidato) {
 		url : "./ajax_buscar_candidato.jsp?numeroCandidato=" + numeroCandidato,
 		dataType : "html",
 		success : function(data) {
-			$("#candidato").html(data.trim())
+			$("#candidato").html(data.trim());
+			if($("#id_candidato").val() == null || 
+					$("#id_candidato").val() == undefined || 
+					$("#id_candidato").val() == ""){
+				$("#votar").prop("disabled", true);
+			}else{
+				$("#votar").prop("disabled", false);
+			}
 			return data;
 		},
 		error : function() {
 			
 		}
 	});
+}
+function votar(){
+	sendGET("voto/votar/" + $("#secao").val() + "/" +  $("#eleitor").val() + "/" + $("#id_candidato").val() + "/" , "", sucessoVoto);
+}
+function sucessoVoto(data){
+	var mensagem = JSON.parse(data);
+	if(mensagem.id == 0){
+		alertify
+		.error(mensagem.descricao);
+		
+	}else{
+		alertify.success(mensagem.descricao);
+	}
+	setTimeout(function(){ document.location.href = "./secao.jsp"; }, 3000);
 }

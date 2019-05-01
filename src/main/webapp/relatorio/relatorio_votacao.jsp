@@ -31,7 +31,7 @@
 
 <!-- Custom styles for this template -->
 <link href="../css/simple-sidebar.css" rel="stylesheet">
-<title>Cadastro de Usuário</title>
+<title>Relatório de Votação</title>
 </head>
 <body>
 	<%
@@ -48,50 +48,9 @@
 			<%@ include file="../template/topbar.jsp"%>
 			<div class="container-fluid">
 				<h3>Relatório de Votação</h3>
-				<table>
-					<tr class="header">
-						<th>Usuário Eleitor</th>
-						<th>Usuário Candidato</th>
-						<th>Usuário Seção</th>
-						<th>Horário</th>
-					</tr>
-					<tr>
-						<td>Rafael</td>
-						<td>Jetulio Vargas</td>
-						<td>Pedro</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-					<tr>
-						<td>Otavio</td>
-						<td>José Sarnei</td>
-						<td>Pedro</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-					<tr>
-						<td>Marcos</td>
-						<td>Lula</td>
-						<td>Pedro</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-					<tr>
-						<td>Olavo</td>
-						<td>Juscelino Kubischeck</td>
-						<td>Amanda</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-					<tr>
-						<td>Antonio</td>
-						<td>Bolsonaro</td>
-						<td>Amir</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-					<tr>
-						<td>Abraão</td>
-						<td>Marina Silva</td>
-						<td>Amanda</td>
-						<td> 29/04/2019 12:25</td>
-					</tr>
-				</table>
+				<label for='secoes'>Seção</label>
+				<div class="form-group" id="div_secao"></div>
+				<div id="relatorio"></div>
 			</div>
 		</div>
 
@@ -108,5 +67,8 @@
 <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <script src="../js/comum.js" charset="ISO-8859-1"></script>
-<script src="../js/cadastro_usuario.js" charset="ISO-8859-1"></script>
+<script src="../js/relatorio.js" charset="ISO-8859-1"></script>
+<script >
+buscarSecoes();
+</script>
 </html>
