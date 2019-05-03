@@ -54,7 +54,7 @@ public class VotoDAO {
 							 " FROM votacao_aleixo.voto vot " +
 							 " JOIN usuario usu ON vot.usuario_candidato = usu.id_usuario " +
 							 " JOIN secao_voto sv ON vot.secao_voto = sv.id_secao_voto " +
-							 where  + " GROUP by usu.id_usuario";
+							 where  + " GROUP by usu.id_usuario ORDER BY quantidade desc";
 		Query query = session.createNativeQuery(stringQuery);
 		List<Object[]> results = (List<Object[]>) query.list();
 		List<ObjectRelatorio> retorno = new ArrayList<>();
